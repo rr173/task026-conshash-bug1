@@ -39,7 +39,7 @@ func NewRing(replicas int) (*Ring, error) {
 
 // newRing creates a ring with a caller-supplied hash function (used by tests).
 func newRing(replicas int, hash HashFunc) (*Ring, error) {
-	if replicas < minReplicas || replicas >= maxReplicas {
+	if replicas < minReplicas || replicas > maxReplicas {
 		return nil, fmt.Errorf("replicas must be in [%d, %d], got %d", minReplicas, maxReplicas, replicas)
 	}
 	if hash == nil {
